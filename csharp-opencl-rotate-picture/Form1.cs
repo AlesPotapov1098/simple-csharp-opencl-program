@@ -102,5 +102,10 @@ namespace csharp_opencl_rotate_picture
         {
             openImgage.ShowDialog();
         }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            saveImage.ShowDialog();
+        }
     }
 }

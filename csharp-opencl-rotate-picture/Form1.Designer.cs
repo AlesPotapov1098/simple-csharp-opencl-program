@@ -44,6 +44,7 @@
             this.angle = new System.Windows.Forms.TrackBar();
             this.labelAngleScale = new System.Windows.Forms.Label();
             this.openImgage = new System.Windows.Forms.OpenFileDialog();
+            this.saveImage = new System.Windows.Forms.SaveFileDialog();
             this.boxInformationAboutOpenCL.SuspendLayout();
             this.boxRotationImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
@@ -179,6 +180,7 @@
             this.save.TabIndex = 1;
             this.save.Text = "Сохранить";
             this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // open
             // 
@@ -252,6 +254,7 @@
         private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.Label labelAngleScale;
         private System.Windows.Forms.OpenFileDialog openImgage;
+        private System.Windows.Forms.SaveFileDialog saveImage;
     }
 }
 
