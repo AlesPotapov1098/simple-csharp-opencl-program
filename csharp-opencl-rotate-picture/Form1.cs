@@ -93,6 +93,9 @@ namespace csharp_opencl_rotate_picture
             informationAboutDevice.Update();
         }
 
-        
+        private void angle_Scroll(object sender, EventArgs e)
+        {
+            labelAngleScale.Text = angle.Value.ToString();
+        }
     }
 }

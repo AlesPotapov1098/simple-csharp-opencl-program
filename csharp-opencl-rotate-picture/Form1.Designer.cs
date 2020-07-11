@@ -196,6 +196,7 @@
             this.angle.Name = "angle";
             this.angle.Size = new System.Drawing.Size(524, 56);
             this.angle.TabIndex = 3;
+            this.angle.Scroll += new System.EventHandler(this.angle_Scroll);
             // 
             // labelAngleScale
             // 
