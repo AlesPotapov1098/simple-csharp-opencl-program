@@ -43,7 +43,7 @@ namespace csharp_opencl_rotate_picture
                 namesOfDevicesCurrentPlatform.Items.Add(device.Name);
             }
             namesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
-            labelAngleScale.Text = angle.Value.ToString();
+            labelAngleScale.Text = string.Format("∠{0}°",angle.Value);
         }
 
         private void namesOpenCLPlatfroms_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace csharp_opencl_rotate_picture
 
         private void angle_Scroll(object sender, EventArgs e)
         {
-            labelAngleScale.Text = angle.Value.ToString();
+            labelAngleScale.Text = string.Format("∠{0}°", angle.Value);
         }
 
         private void open_Click(object sender, EventArgs e)

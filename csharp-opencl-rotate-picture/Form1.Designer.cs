@@ -205,9 +205,10 @@
             // labelAngleScale
             // 
             this.labelAngleScale.AutoSize = true;
-            this.labelAngleScale.Location = new System.Drawing.Point(34, 503);
+            this.labelAngleScale.Font = new System.Drawing.Font("Microsoft New Tai Lue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAngleScale.Location = new System.Drawing.Point(19, 491);
             this.labelAngleScale.Name = "labelAngleScale";
-            this.labelAngleScale.Size = new System.Drawing.Size(46, 16);
+            this.labelAngleScale.Size = new System.Drawing.Size(80, 28);
             this.labelAngleScale.TabIndex = 4;
             this.labelAngleScale.Text = "label1";
             // 
