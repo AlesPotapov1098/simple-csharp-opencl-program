@@ -168,7 +168,7 @@
             // 
             this.LabelAngleScale.AutoSize = true;
             this.LabelAngleScale.Font = new System.Drawing.Font("Microsoft New Tai Lue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelAngleScale.Location = new System.Drawing.Point(19, 491);
+            this.LabelAngleScale.Location = new System.Drawing.Point(43, 512);
             this.LabelAngleScale.Name = "LabelAngleScale";
             this.LabelAngleScale.Size = new System.Drawing.Size(80, 28);
             this.LabelAngleScale.TabIndex = 4;
@@ -177,16 +177,17 @@
             // Angle
             // 
             this.Angle.LargeChange = 360;
-            this.Angle.Location = new System.Drawing.Point(138, 491);
+            this.Angle.Location = new System.Drawing.Point(138, 500);
             this.Angle.Maximum = 360;
             this.Angle.Name = "Angle";
             this.Angle.Size = new System.Drawing.Size(524, 56);
             this.Angle.TabIndex = 3;
+            this.Angle.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.Angle.Scroll += new System.EventHandler(this.Angle_Scroll);
             // 
             // Open
             // 
-            this.Open.Location = new System.Drawing.Point(668, 503);
+            this.Open.Location = new System.Drawing.Point(668, 512);
             this.Open.Name = "Open";
             this.Open.Size = new System.Drawing.Size(86, 35);
             this.Open.TabIndex = 2;
@@ -196,7 +197,7 @@
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(760, 503);
+            this.Save.Location = new System.Drawing.Point(760, 512);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(103, 35);
             this.Save.TabIndex = 1;
@@ -208,7 +209,7 @@
             // 
             this.ImageRotates.Location = new System.Drawing.Point(24, 24);
             this.ImageRotates.Name = "ImageRotates";
-            this.ImageRotates.Size = new System.Drawing.Size(839, 440);
+            this.ImageRotates.Size = new System.Drawing.Size(839, 470);
             this.ImageRotates.TabIndex = 0;
             this.ImageRotates.TabStop = false;
             // 
