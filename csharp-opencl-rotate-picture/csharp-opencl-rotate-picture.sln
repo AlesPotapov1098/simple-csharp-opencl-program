@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-opencl-rotate-picture", "csharp-opencl-rotate-picture.csproj", "{0FCCBBD0-E958-4475-ABE1-B3D78574EE3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FCCBBD0-E958-4475-ABE1-B3D78574EE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FCCBBD0-E958-4475-ABE1-B3D78574EE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FCCBBD0-E958-4475-ABE1-B3D78574EE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FCCBBD0-E958-4475-ABE1-B3D78574EE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A22308F-C63C-4DB2-AF59-A0BC7D9E83D9}
+	EndGlobalSection
+EndGlobal
