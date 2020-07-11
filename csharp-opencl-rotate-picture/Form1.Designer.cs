@@ -43,7 +43,7 @@
             this.open = new System.Windows.Forms.Button();
             this.angle = new System.Windows.Forms.TrackBar();
             this.labelAngleScale = new System.Windows.Forms.Label();
-            this.openImgage = new System.Windows.Forms.OpenFileDialog();
+            this.openImage = new System.Windows.Forms.OpenFileDialog();
             this.saveImage = new System.Windows.Forms.SaveFileDialog();
             this.boxInformationAboutOpenCL.SuspendLayout();
             this.boxRotationImage.SuspendLayout();
@@ -212,9 +212,9 @@
             this.labelAngleScale.TabIndex = 4;
             this.labelAngleScale.Text = "label1";
             // 
-            // openImgage
+            // openImage
             // 
-            this.openImgage.FileName = "openFileDialog1";
+            this.openImage.FileName = "openFileDialog1";
             // 
             // rotationImageByOpenCL
             // 
@@ -254,7 +254,7 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.Label labelAngleScale;
-        private System.Windows.Forms.OpenFileDialog openImgage;
+        private System.Windows.Forms.OpenFileDialog openImage;
         private System.Windows.Forms.SaveFileDialog saveImage;
     }
 }
