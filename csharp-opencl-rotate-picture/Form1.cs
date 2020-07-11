@@ -19,6 +19,7 @@ namespace csharp_opencl_rotate_picture
         private int currentDeviceOfCurrentPlatform;
         private string pathToOpenImage;
         private string pathToSaveImage;
+        private Image userImage;
         public RotationImageByOpenCL()
         {
             InitializeComponent();
@@ -109,6 +110,15 @@ namespace csharp_opencl_rotate_picture
                 return;
             }
             pathToOpenImage = OpenImage.FileName;
+
+            try
+            {
+                userImage = Image.FromFile(pathToOpenImage);
+            } 
+            catch(OutOfMemoryException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -118,6 +128,21 @@ namespace csharp_opencl_rotate_picture
                 return;
             }
             pathToSaveImage = SaveImage.FileName;
+
+            try
+            {
+                userImage.Save(pathToSaveImage);
+            }
+            catch (OutOfMemoryException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ImageRotates_Paint(object sender, PaintEventArgs e)
+        {
+            ImageRotates.Image = userImage;
+            ImageRotates.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

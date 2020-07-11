@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.BoxInformationAboutOpenCL = new System.Windows.Forms.GroupBox();
+            this.InformationAboutDevice = new System.Windows.Forms.ListBox();
+            this.LabelInfoAboutDevice = new System.Windows.Forms.Label();
+            this.LabelInfoAboutCurrentPlatfroms = new System.Windows.Forms.Label();
+            this.InformationCurrentPlatfrom = new System.Windows.Forms.ListBox();
             this.NamesOfDevicesCurrentPlatform = new System.Windows.Forms.ComboBox();
             this.LabelDevicesOfCurrentPlatfrom = new System.Windows.Forms.Label();
             this.LabelNamesOpenCLPlatfroms = new System.Windows.Forms.Label();
             this.NamesOpenCLPlatfroms = new System.Windows.Forms.ComboBox();
-            this.InformationCurrentPlatfrom = new System.Windows.Forms.ListBox();
-            this.LabelInfoAboutCurrentPlatfroms = new System.Windows.Forms.Label();
-            this.LabelInfoAboutDevice = new System.Windows.Forms.Label();
-            this.InformationAboutDevice = new System.Windows.Forms.ListBox();
             this.BoxRotationImage = new System.Windows.Forms.GroupBox();
-            this.Image = new System.Windows.Forms.PictureBox();
-            this.Save = new System.Windows.Forms.Button();
-            this.Open = new System.Windows.Forms.Button();
-            this.Angle = new System.Windows.Forms.TrackBar();
             this.LabelAngleScale = new System.Windows.Forms.Label();
+            this.Angle = new System.Windows.Forms.TrackBar();
+            this.Open = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
+            this.ImageRotates = new System.Windows.Forms.PictureBox();
             this.OpenImage = new System.Windows.Forms.OpenFileDialog();
             this.SaveImage = new System.Windows.Forms.SaveFileDialog();
             this.BoxInformationAboutOpenCL.SuspendLayout();
             this.BoxRotationImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Angle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageRotates)).BeginInit();
             this.SuspendLayout();
             // 
             // BoxInformationAboutOpenCL
@@ -68,6 +68,42 @@
             this.BoxInformationAboutOpenCL.TabIndex = 1;
             this.BoxInformationAboutOpenCL.TabStop = false;
             this.BoxInformationAboutOpenCL.Text = "Информация об OpenCL";
+            // 
+            // InformationAboutDevice
+            // 
+            this.InformationAboutDevice.FormattingEnabled = true;
+            this.InformationAboutDevice.ItemHeight = 16;
+            this.InformationAboutDevice.Location = new System.Drawing.Point(25, 317);
+            this.InformationAboutDevice.Name = "InformationAboutDevice";
+            this.InformationAboutDevice.Size = new System.Drawing.Size(328, 132);
+            this.InformationAboutDevice.TabIndex = 7;
+            // 
+            // LabelInfoAboutDevice
+            // 
+            this.LabelInfoAboutDevice.AutoSize = true;
+            this.LabelInfoAboutDevice.Location = new System.Drawing.Point(22, 289);
+            this.LabelInfoAboutDevice.Name = "LabelInfoAboutDevice";
+            this.LabelInfoAboutDevice.Size = new System.Drawing.Size(105, 16);
+            this.LabelInfoAboutDevice.TabIndex = 6;
+            this.LabelInfoAboutDevice.Text = "Об устройстве";
+            // 
+            // LabelInfoAboutCurrentPlatfroms
+            // 
+            this.LabelInfoAboutCurrentPlatfroms.AutoSize = true;
+            this.LabelInfoAboutCurrentPlatfroms.Location = new System.Drawing.Point(22, 157);
+            this.LabelInfoAboutCurrentPlatfroms.Name = "LabelInfoAboutCurrentPlatfroms";
+            this.LabelInfoAboutCurrentPlatfroms.Size = new System.Drawing.Size(107, 16);
+            this.LabelInfoAboutCurrentPlatfroms.TabIndex = 5;
+            this.LabelInfoAboutCurrentPlatfroms.Text = "Об платформе";
+            // 
+            // InformationCurrentPlatfrom
+            // 
+            this.InformationCurrentPlatfrom.FormattingEnabled = true;
+            this.InformationCurrentPlatfrom.ItemHeight = 16;
+            this.InformationCurrentPlatfrom.Location = new System.Drawing.Point(25, 189);
+            this.InformationCurrentPlatfrom.Name = "InformationCurrentPlatfrom";
+            this.InformationCurrentPlatfrom.Size = new System.Drawing.Size(328, 84);
+            this.InformationCurrentPlatfrom.TabIndex = 4;
             // 
             // NamesOfDevicesCurrentPlatform
             // 
@@ -113,49 +149,13 @@
             this.NamesOpenCLPlatfroms.TabIndex = 0;
             this.NamesOpenCLPlatfroms.SelectedIndexChanged += new System.EventHandler(this.NamesOpenCLPlatfroms_SelectedIndexChanged);
             // 
-            // InformationCurrentPlatfrom
-            // 
-            this.InformationCurrentPlatfrom.FormattingEnabled = true;
-            this.InformationCurrentPlatfrom.ItemHeight = 16;
-            this.InformationCurrentPlatfrom.Location = new System.Drawing.Point(25, 189);
-            this.InformationCurrentPlatfrom.Name = "InformationCurrentPlatfrom";
-            this.InformationCurrentPlatfrom.Size = new System.Drawing.Size(328, 84);
-            this.InformationCurrentPlatfrom.TabIndex = 4;
-            // 
-            // LabelInfoAboutCurrentPlatfroms
-            // 
-            this.LabelInfoAboutCurrentPlatfroms.AutoSize = true;
-            this.LabelInfoAboutCurrentPlatfroms.Location = new System.Drawing.Point(22, 157);
-            this.LabelInfoAboutCurrentPlatfroms.Name = "LabelInfoAboutCurrentPlatfroms";
-            this.LabelInfoAboutCurrentPlatfroms.Size = new System.Drawing.Size(107, 16);
-            this.LabelInfoAboutCurrentPlatfroms.TabIndex = 5;
-            this.LabelInfoAboutCurrentPlatfroms.Text = "Об платформе";
-            // 
-            // LabelInfoAboutDevice
-            // 
-            this.LabelInfoAboutDevice.AutoSize = true;
-            this.LabelInfoAboutDevice.Location = new System.Drawing.Point(22, 289);
-            this.LabelInfoAboutDevice.Name = "LabelInfoAboutDevice";
-            this.LabelInfoAboutDevice.Size = new System.Drawing.Size(105, 16);
-            this.LabelInfoAboutDevice.TabIndex = 6;
-            this.LabelInfoAboutDevice.Text = "Об устройстве";
-            // 
-            // InformationAboutDevice
-            // 
-            this.InformationAboutDevice.FormattingEnabled = true;
-            this.InformationAboutDevice.ItemHeight = 16;
-            this.InformationAboutDevice.Location = new System.Drawing.Point(25, 317);
-            this.InformationAboutDevice.Name = "InformationAboutDevice";
-            this.InformationAboutDevice.Size = new System.Drawing.Size(328, 132);
-            this.InformationAboutDevice.TabIndex = 7;
-            // 
             // BoxRotationImage
             // 
             this.BoxRotationImage.Controls.Add(this.LabelAngleScale);
             this.BoxRotationImage.Controls.Add(this.Angle);
             this.BoxRotationImage.Controls.Add(this.Open);
             this.BoxRotationImage.Controls.Add(this.Save);
-            this.BoxRotationImage.Controls.Add(this.Image);
+            this.BoxRotationImage.Controls.Add(this.ImageRotates);
             this.BoxRotationImage.Font = new System.Drawing.Font("Microsoft New Tai Lue", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BoxRotationImage.Location = new System.Drawing.Point(393, 13);
             this.BoxRotationImage.Name = "BoxRotationImage";
@@ -164,33 +164,15 @@
             this.BoxRotationImage.TabStop = false;
             this.BoxRotationImage.Text = "Поворот изображения";
             // 
-            // Image
+            // LabelAngleScale
             // 
-            this.Image.Location = new System.Drawing.Point(24, 24);
-            this.Image.Name = "Image";
-            this.Image.Size = new System.Drawing.Size(839, 440);
-            this.Image.TabIndex = 0;
-            this.Image.TabStop = false;
-            // 
-            // Save
-            // 
-            this.Save.Location = new System.Drawing.Point(760, 503);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(103, 35);
-            this.Save.TabIndex = 1;
-            this.Save.Text = "Сохранить";
-            this.Save.UseVisualStyleBackColor = true;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // Open
-            // 
-            this.Open.Location = new System.Drawing.Point(668, 503);
-            this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(86, 35);
-            this.Open.TabIndex = 2;
-            this.Open.Text = "Открыть";
-            this.Open.UseVisualStyleBackColor = true;
-            this.Open.Click += new System.EventHandler(this.Open_Click);
+            this.LabelAngleScale.AutoSize = true;
+            this.LabelAngleScale.Font = new System.Drawing.Font("Microsoft New Tai Lue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelAngleScale.Location = new System.Drawing.Point(19, 491);
+            this.LabelAngleScale.Name = "LabelAngleScale";
+            this.LabelAngleScale.Size = new System.Drawing.Size(80, 28);
+            this.LabelAngleScale.TabIndex = 4;
+            this.LabelAngleScale.Text = "label1";
             // 
             // Angle
             // 
@@ -202,15 +184,34 @@
             this.Angle.TabIndex = 3;
             this.Angle.Scroll += new System.EventHandler(this.Angle_Scroll);
             // 
-            // LabelAngleScale
+            // Open
             // 
-            this.LabelAngleScale.AutoSize = true;
-            this.LabelAngleScale.Font = new System.Drawing.Font("Microsoft New Tai Lue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelAngleScale.Location = new System.Drawing.Point(19, 491);
-            this.LabelAngleScale.Name = "LabelAngleScale";
-            this.LabelAngleScale.Size = new System.Drawing.Size(80, 28);
-            this.LabelAngleScale.TabIndex = 4;
-            this.LabelAngleScale.Text = "label1";
+            this.Open.Location = new System.Drawing.Point(668, 503);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(86, 35);
+            this.Open.TabIndex = 2;
+            this.Open.Text = "Открыть";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(760, 503);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(103, 35);
+            this.Save.TabIndex = 1;
+            this.Save.Text = "Сохранить";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // ImageRotates
+            // 
+            this.ImageRotates.Location = new System.Drawing.Point(24, 24);
+            this.ImageRotates.Name = "ImageRotates";
+            this.ImageRotates.Size = new System.Drawing.Size(839, 440);
+            this.ImageRotates.TabIndex = 0;
+            this.ImageRotates.TabStop = false;
+            this.ImageRotates.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageRotates_Paint);
             // 
             // OpenImage
             // 
@@ -231,8 +232,8 @@
             this.BoxInformationAboutOpenCL.PerformLayout();
             this.BoxRotationImage.ResumeLayout(false);
             this.BoxRotationImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Angle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageRotates)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,7 +253,7 @@
         private System.Windows.Forms.TrackBar Angle;
         private System.Windows.Forms.Button Open;
         private System.Windows.Forms.Button Save;
-        private System.Windows.Forms.PictureBox Image;
+        private System.Windows.Forms.PictureBox ImageRotates;
         private System.Windows.Forms.Label LabelAngleScale;
         private System.Windows.Forms.OpenFileDialog OpenImage;
         private System.Windows.Forms.SaveFileDialog SaveImage;
