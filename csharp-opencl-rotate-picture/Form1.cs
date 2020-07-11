@@ -17,6 +17,8 @@ namespace csharp_opencl_rotate_picture
         private Dictionary<string,ComputeDevice[]> devicesByOpenCLPlatfrom;
         private int currentSIOfNamesOfOpenCLPlatforms;
         private int currentDeviceOfCurrentPlatform;
+        private string pathToOpenImage;
+        private string pathToSaveImage;
         public RotationImageByOpenCL()
         {
             InitializeComponent();
@@ -24,6 +26,8 @@ namespace csharp_opencl_rotate_picture
 
         private void RotationImageByOpenCL_Activated(object sender, EventArgs e)
         {
+            pathToOpenImage = string.Empty;
+            pathToSaveImage = string.Empty;
             currentSIOfNamesOfOpenCLPlatforms = 0;
             currentDeviceOfCurrentPlatform = 0;
             platfomrsOfOpenCL = ComputePlatform.Platforms.ToArray();
@@ -100,12 +104,20 @@ namespace csharp_opencl_rotate_picture
 
         private void Open_Click(object sender, EventArgs e)
         {
-            OpenImage.ShowDialog();
+            if(OpenImage.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            pathToOpenImage = OpenImage.FileName;
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
-            SaveImage.ShowDialog();
+            if (SaveImage.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            pathToSaveImage = SaveImage.FileName;
         }
     }
 }
