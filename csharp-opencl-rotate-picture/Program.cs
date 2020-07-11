@@ -16,7 +16,7 @@ namespace csharp_opencl_rotate_picture
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new rotationImageByOpenCL());
+            Application.Run(new RotationImageByOpenCL());
         }
     }
 }

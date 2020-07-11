@@ -11,18 +11,18 @@ using Cloo;
 
 namespace csharp_opencl_rotate_picture
 {
-    public partial class rotationImageByOpenCL : Form
+    public partial class RotationImageByOpenCL : Form
     {
         private ComputePlatform[] platfomrsOfOpenCL;
         private Dictionary<string,ComputeDevice[]> devicesByOpenCLPlatfrom;
         private int currentSIOfNamesOfOpenCLPlatforms;
         private int currentDeviceOfCurrentPlatform;
-        public rotationImageByOpenCL()
+        public RotationImageByOpenCL()
         {
             InitializeComponent();
         }
 
-        private void rotationImageByOpenCL_Activated(object sender, EventArgs e)
+        private void RotationImageByOpenCL_Activated(object sender, EventArgs e)
         {
             currentSIOfNamesOfOpenCLPlatforms = 0;
             currentDeviceOfCurrentPlatform = 0;
@@ -30,57 +30,57 @@ namespace csharp_opencl_rotate_picture
             devicesByOpenCLPlatfrom = new Dictionary<string, ComputeDevice[]>();
             foreach (var item in platfomrsOfOpenCL)
             {
-                namesOpenCLPlatfroms.Items.Add(item.Name);
+                NamesOpenCLPlatfroms.Items.Add(item.Name);
 
                 var devices = item.Devices;
                 devicesByOpenCLPlatfrom.Add(item.Name, devices.ToArray());
             }
-            namesOpenCLPlatfroms.SelectedIndex = currentSIOfNamesOfOpenCLPlatforms;
+            NamesOpenCLPlatfroms.SelectedIndex = currentSIOfNamesOfOpenCLPlatforms;
             ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
                 platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
             foreach(var device in deviceOfCurrentPlatfrom)
             {
-                namesOfDevicesCurrentPlatform.Items.Add(device.Name);
+                NamesOfDevicesCurrentPlatform.Items.Add(device.Name);
             }
-            namesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
-            labelAngleScale.Text = string.Format("∠{0}°",angle.Value);
+            NamesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
+            LabelAngleScale.Text = string.Format("∠{0}°",Angle.Value);
         }
 
-        private void namesOpenCLPlatfroms_SelectedIndexChanged(object sender, EventArgs e)
+        private void NamesOpenCLPlatfroms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentSIOfNamesOfOpenCLPlatforms = namesOpenCLPlatfroms.SelectedIndex;
+            currentSIOfNamesOfOpenCLPlatforms = NamesOpenCLPlatfroms.SelectedIndex;
             currentDeviceOfCurrentPlatform = 0;
             ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
                 platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
-            namesOfDevicesCurrentPlatform.Items.Clear();
+            NamesOfDevicesCurrentPlatform.Items.Clear();
             foreach (var item in deviceOfCurrentPlatfrom)
             {
-                namesOfDevicesCurrentPlatform.Items.Add(item.Name);
+                NamesOfDevicesCurrentPlatform.Items.Add(item.Name);
             }
-            namesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
+            NamesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
 
             UpdatePlatfromInformation();
             UpdateDeviceInformation();
         }
-        private void namesOfDevicesCurrentPlatform_SelectedIndexChanged(object sender, EventArgs e)
+        private void NamesOfDevicesCurrentPlatform_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentDeviceOfCurrentPlatform = namesOfDevicesCurrentPlatform.SelectedIndex;
+            currentDeviceOfCurrentPlatform = NamesOfDevicesCurrentPlatform.SelectedIndex;
             UpdateDeviceInformation();
         }
 
         private void UpdatePlatfromInformation()
         {
-            informationCurrentPlatfrom.Items.Clear();
+            InformationCurrentPlatfrom.Items.Clear();
             ComputePlatform platform = platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms];
             string informationPlatform = string.Format("Name : {0}\nVendor : {1}\nVersion : {2}\nProfile : {3}\n",
                 platform.Name, platform.Vendor, platform.Version, platform.Profile);
-            informationCurrentPlatfrom.Items.AddRange(informationPlatform.Split('\n').ToArray());
-            informationCurrentPlatfrom.Update();
+            InformationCurrentPlatfrom.Items.AddRange(informationPlatform.Split('\n').ToArray());
+            InformationCurrentPlatfrom.Update();
         }
 
         private void UpdateDeviceInformation()
         {
-            informationAboutDevice.Items.Clear();
+            InformationAboutDevice.Items.Clear();
             ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
                 platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
             ComputeDevice device = deviceOfCurrentPlatfrom[currentDeviceOfCurrentPlatform];
@@ -89,23 +89,23 @@ namespace csharp_opencl_rotate_picture
                 device.Type.ToString(), device.Name, device.Vendor, device.VersionString, device.DriverVersion,
                 device.MaxWorkGroupSize,device.MaxWorkItemDimensions);
             
-            informationAboutDevice.Items.AddRange(informationDevice.Split('\n').ToArray());
-            informationAboutDevice.Update();
+            InformationAboutDevice.Items.AddRange(informationDevice.Split('\n').ToArray());
+            InformationAboutDevice.Update();
         }
 
-        private void angle_Scroll(object sender, EventArgs e)
+        private void Angle_Scroll(object sender, EventArgs e)
         {
-            labelAngleScale.Text = string.Format("∠{0}°", angle.Value);
+            LabelAngleScale.Text = string.Format("∠{0}°", Angle.Value);
         }
 
-        private void open_Click(object sender, EventArgs e)
+        private void Open_Click(object sender, EventArgs e)
         {
-            openImage.ShowDialog();
+            OpenImage.ShowDialog();
         }
 
-        private void save_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
-            saveImage.ShowDialog();
+            SaveImage.ShowDialog();
         }
     }
 }
