@@ -97,5 +97,10 @@ namespace csharp_opencl_rotate_picture
         {
             labelAngleScale.Text = angle.Value.ToString();
         }
+
+        private void open_Click(object sender, EventArgs e)
+        {
+            openImgage.ShowDialog();
+        }
     }
 }

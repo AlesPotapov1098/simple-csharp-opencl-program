@@ -43,6 +43,7 @@
             this.open = new System.Windows.Forms.Button();
             this.angle = new System.Windows.Forms.TrackBar();
             this.labelAngleScale = new System.Windows.Forms.Label();
+            this.openImgage = new System.Windows.Forms.OpenFileDialog();
             this.boxInformationAboutOpenCL.SuspendLayout();
             this.boxRotationImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
@@ -172,21 +173,22 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(775, 503);
+            this.save.Location = new System.Drawing.Point(760, 503);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(88, 35);
+            this.save.Size = new System.Drawing.Size(103, 35);
             this.save.TabIndex = 1;
             this.save.Text = "Сохранить";
             this.save.UseVisualStyleBackColor = true;
             // 
             // open
             // 
-            this.open.Location = new System.Drawing.Point(683, 503);
+            this.open.Location = new System.Drawing.Point(668, 503);
             this.open.Name = "open";
             this.open.Size = new System.Drawing.Size(86, 35);
             this.open.TabIndex = 2;
             this.open.Text = "Открыть";
             this.open.UseVisualStyleBackColor = true;
+            this.open.Click += new System.EventHandler(this.open_Click);
             // 
             // angle
             // 
@@ -206,6 +208,10 @@
             this.labelAngleScale.Size = new System.Drawing.Size(46, 16);
             this.labelAngleScale.TabIndex = 4;
             this.labelAngleScale.Text = "label1";
+            // 
+            // openImgage
+            // 
+            this.openImgage.FileName = "openFileDialog1";
             // 
             // rotationImageByOpenCL
             // 
@@ -245,6 +251,7 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.Label labelAngleScale;
+        private System.Windows.Forms.OpenFileDialog openImgage;
     }
 }
 
