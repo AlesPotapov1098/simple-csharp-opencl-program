@@ -211,7 +211,6 @@
             this.ImageRotates.Size = new System.Drawing.Size(839, 440);
             this.ImageRotates.TabIndex = 0;
             this.ImageRotates.TabStop = false;
-            this.ImageRotates.Paint += new System.Windows.Forms.PaintEventHandler(this.ImageRotates_Paint);
             // 
             // OpenImage
             // 
@@ -227,7 +226,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RotationImageByOpenCL";
             this.Text = "Form1";
-            this.Activated += new System.EventHandler(this.RotationImageByOpenCL_Activated);
+            this.Load += new System.EventHandler(this.RotationImageByOpenCL_Load);
+            this.Shown += new System.EventHandler(this.RotationImageByOpenCL_Shown);
             this.BoxInformationAboutOpenCL.ResumeLayout(false);
             this.BoxInformationAboutOpenCL.PerformLayout();
             this.BoxRotationImage.ResumeLayout(false);

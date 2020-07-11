@@ -22,33 +22,7 @@ namespace csharp_opencl_rotate_picture
         private Image userImage;
         public RotationImageByOpenCL()
         {
-            InitializeComponent();
-        }
-
-        private void RotationImageByOpenCL_Activated(object sender, EventArgs e)
-        {
-            pathToOpenImage = string.Empty;
-            pathToSaveImage = string.Empty;
-            currentSIOfNamesOfOpenCLPlatforms = 0;
-            currentDeviceOfCurrentPlatform = 0;
-            platfomrsOfOpenCL = ComputePlatform.Platforms.ToArray();
-            devicesByOpenCLPlatfrom = new Dictionary<string, ComputeDevice[]>();
-            foreach (var item in platfomrsOfOpenCL)
-            {
-                NamesOpenCLPlatfroms.Items.Add(item.Name);
-
-                var devices = item.Devices;
-                devicesByOpenCLPlatfrom.Add(item.Name, devices.ToArray());
-            }
-            NamesOpenCLPlatfroms.SelectedIndex = currentSIOfNamesOfOpenCLPlatforms;
-            ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
-                platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
-            foreach(var device in deviceOfCurrentPlatfrom)
-            {
-                NamesOfDevicesCurrentPlatform.Items.Add(device.Name);
-            }
-            NamesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
-            LabelAngleScale.Text = string.Format("∠{0}°",Angle.Value);
+             InitializeComponent();                       
         }
 
         private void NamesOpenCLPlatfroms_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,9 +37,8 @@ namespace csharp_opencl_rotate_picture
                 NamesOfDevicesCurrentPlatform.Items.Add(item.Name);
             }
             NamesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
-
             UpdatePlatfromInformation();
-            UpdateDeviceInformation();
+            UpdateDeviceInformation();    
         }
         private void NamesOfDevicesCurrentPlatform_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -114,6 +87,8 @@ namespace csharp_opencl_rotate_picture
             try
             {
                 userImage = Image.FromFile(pathToOpenImage);
+                ImageRotates.Image = userImage;
+                ImageRotates.Update();
             } 
             catch(OutOfMemoryException ex)
             {
@@ -139,9 +114,31 @@ namespace csharp_opencl_rotate_picture
             }
         }
 
-        private void ImageRotates_Paint(object sender, PaintEventArgs e)
+        private void RotationImageByOpenCL_Shown(object sender, EventArgs e)
         {
-            ImageRotates.Image = userImage;
+            pathToOpenImage = string.Empty;
+            pathToSaveImage = string.Empty;
+            currentSIOfNamesOfOpenCLPlatforms = 0;
+            currentDeviceOfCurrentPlatform = 0;
+            NamesOpenCLPlatfroms.Items.Clear();
+            NamesOfDevicesCurrentPlatform.Items.Clear();
+            foreach (var item in platfomrsOfOpenCL)
+            {
+                NamesOpenCLPlatfroms.Items.Add(item.Name);
+            }
+            NamesOpenCLPlatfroms.SelectedIndex = currentSIOfNamesOfOpenCLPlatforms;
+            LabelAngleScale.Text = string.Format("∠{0}°", Angle.Value);
+        }
+
+        private void RotationImageByOpenCL_Load(object sender, EventArgs e)
+        {
+            platfomrsOfOpenCL = ComputePlatform.Platforms.ToArray();
+            devicesByOpenCLPlatfrom = new Dictionary<string, ComputeDevice[]>();
+            foreach (var item in platfomrsOfOpenCL)
+            {
+                var devices = item.Devices;
+                devicesByOpenCLPlatfrom.Add(item.Name, devices.ToArray());
+            }
             ImageRotates.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
