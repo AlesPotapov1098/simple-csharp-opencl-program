@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cloo;
 using csharp_opencl_rotate_picture.platfrom_model;
 using csharp_opencl_rotate_picture.platfrom_model.Dto;
-using OpenCL;
-using OpenCL.Net;
 
 namespace csharp_opencl_rotate_picture
 {
@@ -42,6 +34,7 @@ namespace csharp_opencl_rotate_picture
             UpdatePlatfromInformation();
             NamesOfDevicesCurrentPlatform.SelectedIndex = currentDeviceOfCurrentPlatform;
         }
+
         private void NamesOfDevicesCurrentPlatform_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentDeviceOfCurrentPlatform = NamesOfDevicesCurrentPlatform.SelectedIndex;

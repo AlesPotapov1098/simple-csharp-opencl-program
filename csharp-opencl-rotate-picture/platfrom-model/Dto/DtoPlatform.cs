@@ -1,5 +1,4 @@
-﻿using OpenCL;
-using OpenCL.Net;
+﻿using OpenCL.Net;
 
 namespace csharp_opencl_rotate_picture.platfrom_model.Dto
 {

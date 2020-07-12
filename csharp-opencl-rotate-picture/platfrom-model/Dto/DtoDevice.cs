@@ -1,6 +1,4 @@
-﻿using OpenCL;
-using OpenCL.Net;
-using System.IO;
+﻿using OpenCL.Net;
 
 namespace csharp_opencl_rotate_picture.platfrom_model.Dto
 {
@@ -24,7 +22,7 @@ namespace csharp_opencl_rotate_picture.platfrom_model.Dto
         public string Vendor => infoBufferDeviceVendor.ToString();
         public string Version => infoBufferDeviceVerion.ToString();
         public string DriverVersion => infoBufferDeviceDriverVersion.ToString();
-        public string Type => infoBufferDeviceType.ToString();
+        public DeviceType Type => infoBufferDeviceType.CastTo<DeviceType>();
         public long MaxWorkGroupSize => infoBufferDeviceMaxWorkGroupSize.CastTo<long>();
         public int MaxWorkItemDimensions => infoBufferDeviceMaxWorkItemDimensions.CastTo<int>();
         public Device ID { get; }
@@ -45,7 +43,7 @@ namespace csharp_opencl_rotate_picture.platfrom_model.Dto
         {
             return string.Format("Type : {0}\nName : {1}\nVendor : {2}\nVersion : {3}\nDriver version: {4}\n" +
                 "Max work group size : {5}\nMax work item dimensions : {6}\n",
-                Type, Name, Vendor, Version, DriverVersion,
+                Type.ToString(), Name, Vendor, Version, DriverVersion,
                 MaxWorkGroupSize, MaxWorkItemDimensions);
         }
     }

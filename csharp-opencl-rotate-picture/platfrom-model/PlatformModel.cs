@@ -1,8 +1,5 @@
 ﻿using csharp_opencl_rotate_picture.platfrom_model.Dto;
-using OpenCL;
 using OpenCL.Net;
-using System;
-using System.Collections.Generic;
 
 namespace csharp_opencl_rotate_picture.platfrom_model
 {
