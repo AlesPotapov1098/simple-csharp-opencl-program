@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cloo;
+using csharp_opencl_rotate_picture.platfrom_model;
+using OpenCL;
+using OpenCL.Net;
 
 namespace csharp_opencl_rotate_picture
 {
@@ -15,11 +18,16 @@ namespace csharp_opencl_rotate_picture
     {
         private ComputePlatform[] platfomrsOfOpenCL;
         private Dictionary<string,ComputeDevice[]> devicesByOpenCLPlatfrom;
-        private int currentSIOfNamesOfOpenCLPlatforms;
+        private int currentOpenCLPlatform;
         private int currentDeviceOfCurrentPlatform;
         private string pathToOpenImage;
         private string pathToSaveImage;
         private Image userImage;
+        private ComputeContext currentContext;
+        private ComputeKernel currentkernel;
+        private ComputeProgram currentProgram;
+        private ComputeCommandQueue currentCommandQueue;
+        
         public RotationImageByOpenCL()
         {
              InitializeComponent();                       
@@ -27,10 +35,10 @@ namespace csharp_opencl_rotate_picture
 
         private void NamesOpenCLPlatfroms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentSIOfNamesOfOpenCLPlatforms = NamesOpenCLPlatfroms.SelectedIndex;
+            currentOpenCLPlatform = NamesOpenCLPlatfroms.SelectedIndex;
             currentDeviceOfCurrentPlatform = 0;
             ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
-                platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
+                platfomrsOfOpenCL[currentOpenCLPlatform].Name];
             NamesOfDevicesCurrentPlatform.Items.Clear();
             foreach (var item in deviceOfCurrentPlatfrom)
             {
@@ -42,14 +50,14 @@ namespace csharp_opencl_rotate_picture
         }
         private void NamesOfDevicesCurrentPlatform_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentDeviceOfCurrentPlatform = NamesOfDevicesCurrentPlatform.SelectedIndex;
+            currentOpenCLPlatform = NamesOfDevicesCurrentPlatform.SelectedIndex;
             UpdateDeviceInformation();
         }
 
         private void UpdatePlatfromInformation()
         {
             InformationCurrentPlatfrom.Items.Clear();
-            ComputePlatform platform = platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms];
+            ComputePlatform platform = platfomrsOfOpenCL[currentOpenCLPlatform];
             string informationPlatform = string.Format("Name : {0}\nVendor : {1}\nVersion : {2}\nProfile : {3}\n",
                 platform.Name, platform.Vendor, platform.Version, platform.Profile);
             InformationCurrentPlatfrom.Items.AddRange(informationPlatform.Split('\n').ToArray());
@@ -60,7 +68,7 @@ namespace csharp_opencl_rotate_picture
         {
             InformationAboutDevice.Items.Clear();
             ComputeDevice[] deviceOfCurrentPlatfrom = devicesByOpenCLPlatfrom[
-                platfomrsOfOpenCL[currentSIOfNamesOfOpenCLPlatforms].Name];
+                platfomrsOfOpenCL[currentOpenCLPlatform].Name];
             ComputeDevice device = deviceOfCurrentPlatfrom[currentDeviceOfCurrentPlatform];
             string informationDevice = string.Format("Type : {0}\nName : {1}\nVendor : {2}\nVersion : {3}\nDriver version: {4}\n" +
                 "Max work group size : {5}\nMax work item dimensions : {6}\n",
@@ -118,7 +126,7 @@ namespace csharp_opencl_rotate_picture
         {
             pathToOpenImage = string.Empty;
             pathToSaveImage = string.Empty;
-            currentSIOfNamesOfOpenCLPlatforms = 0;
+            currentOpenCLPlatform = 0;
             currentDeviceOfCurrentPlatform = 0;
             NamesOpenCLPlatfroms.Items.Clear();
             NamesOfDevicesCurrentPlatform.Items.Clear();
@@ -126,13 +134,15 @@ namespace csharp_opencl_rotate_picture
             {
                 NamesOpenCLPlatfroms.Items.Add(item.Name);
             }
-            NamesOpenCLPlatfroms.SelectedIndex = currentSIOfNamesOfOpenCLPlatforms;
+            NamesOpenCLPlatfroms.SelectedIndex = currentOpenCLPlatform;
             LabelAngleScale.Text = string.Format("∠{0}°", Angle.Value);
+            
         }
 
         private void RotationImageByOpenCL_Load(object sender, EventArgs e)
         {
             platfomrsOfOpenCL = ComputePlatform.Platforms.ToArray();
+            PlatformModel platform = new PlatformModel();
             devicesByOpenCLPlatfrom = new Dictionary<string, ComputeDevice[]>();
             foreach (var item in platfomrsOfOpenCL)
             {
