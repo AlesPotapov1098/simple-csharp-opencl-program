@@ -45,6 +45,7 @@
             this.ImageRotates = new System.Windows.Forms.PictureBox();
             this.OpenImage = new System.Windows.Forms.OpenFileDialog();
             this.SaveImage = new System.Windows.Forms.SaveFileDialog();
+            this.Rotate = new System.Windows.Forms.Button();
             this.BoxInformationAboutOpenCL.SuspendLayout();
             this.BoxRotationImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Angle)).BeginInit();
@@ -151,6 +152,7 @@
             // 
             // BoxRotationImage
             // 
+            this.BoxRotationImage.Controls.Add(this.Rotate);
             this.BoxRotationImage.Controls.Add(this.LabelAngleScale);
             this.BoxRotationImage.Controls.Add(this.Angle);
             this.BoxRotationImage.Controls.Add(this.Open);
@@ -168,7 +170,7 @@
             // 
             this.LabelAngleScale.AutoSize = true;
             this.LabelAngleScale.Font = new System.Drawing.Font("Microsoft New Tai Lue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LabelAngleScale.Location = new System.Drawing.Point(43, 512);
+            this.LabelAngleScale.Location = new System.Drawing.Point(19, 511);
             this.LabelAngleScale.Name = "LabelAngleScale";
             this.LabelAngleScale.Size = new System.Drawing.Size(80, 28);
             this.LabelAngleScale.TabIndex = 4;
@@ -177,17 +179,17 @@
             // Angle
             // 
             this.Angle.LargeChange = 360;
-            this.Angle.Location = new System.Drawing.Point(138, 500);
-            this.Angle.Maximum = 360;
+            this.Angle.Location = new System.Drawing.Point(105, 500);
+            this.Angle.Maximum = 180;
             this.Angle.Name = "Angle";
-            this.Angle.Size = new System.Drawing.Size(524, 56);
+            this.Angle.Size = new System.Drawing.Size(483, 56);
             this.Angle.TabIndex = 3;
             this.Angle.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.Angle.Scroll += new System.EventHandler(this.Angle_Scroll);
             // 
             // Open
             // 
-            this.Open.Location = new System.Drawing.Point(668, 512);
+            this.Open.Location = new System.Drawing.Point(686, 511);
             this.Open.Name = "Open";
             this.Open.Size = new System.Drawing.Size(86, 35);
             this.Open.TabIndex = 2;
@@ -197,7 +199,7 @@
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(760, 512);
+            this.Save.Location = new System.Drawing.Point(778, 511);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(103, 35);
             this.Save.TabIndex = 1;
@@ -216,6 +218,16 @@
             // OpenImage
             // 
             this.OpenImage.FileName = "openFileDialog1";
+            // 
+            // Rotate
+            // 
+            this.Rotate.Location = new System.Drawing.Point(594, 511);
+            this.Rotate.Name = "Rotate";
+            this.Rotate.Size = new System.Drawing.Size(86, 35);
+            this.Rotate.TabIndex = 5;
+            this.Rotate.Text = "Повернуть";
+            this.Rotate.UseVisualStyleBackColor = true;
+            this.Rotate.Click += new System.EventHandler(this.Rotate_Click);
             // 
             // RotationImageByOpenCL
             // 
@@ -258,6 +270,7 @@
         private System.Windows.Forms.Label LabelAngleScale;
         private System.Windows.Forms.OpenFileDialog OpenImage;
         private System.Windows.Forms.SaveFileDialog SaveImage;
+        private System.Windows.Forms.Button Rotate;
     }
 }
 
