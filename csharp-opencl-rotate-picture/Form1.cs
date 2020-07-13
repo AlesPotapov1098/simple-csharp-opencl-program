@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using csharp_opencl_rotate_picture.platfrom_model;
 using csharp_opencl_rotate_picture.platfrom_model.Dto;
-using OpenCL;
 using OpenCL.Net;
 
 namespace csharp_opencl_rotate_picture
@@ -19,6 +18,7 @@ namespace csharp_opencl_rotate_picture
         private string pathToOpenImage;
         private string pathToSaveImage;
         private Image userImage;
+        private Image inImage;
         private Image outImage;
         
         public RotationImageByOpenCL()
@@ -67,6 +67,7 @@ namespace csharp_opencl_rotate_picture
         private void Angle_Scroll(object sender, EventArgs e)
         {
             LabelAngleScale.Text = string.Format("∠{0}°", Angle.Value);
+
         }
 
         private void Open_Click(object sender, EventArgs e)
@@ -99,7 +100,7 @@ namespace csharp_opencl_rotate_picture
 
             try
             {
-                userImage.Save(pathToSaveImage);
+                outImage.Save(pathToSaveImage);
             }
             catch (OutOfMemoryException ex)
             {
@@ -132,7 +133,9 @@ namespace csharp_opencl_rotate_picture
         private void Rotate_Click(object sender, EventArgs e)
         {
             Angle.Enabled = false;
-            int angle = Angle.Value;
+            double angle = (double)Angle.Value * Math.PI / 180;
+            double cos = Math.Cos(angle);
+            double sin = Math.Sin(angle);
 
             DtoPlatform platform = platfomrsOfOpenCL.Platforms[currentOpenCLPlatform];
             Device device = platform.devices[currentDeviceOfCurrentPlatform].ID;
@@ -165,6 +168,8 @@ namespace csharp_opencl_rotate_picture
 
                 int intInputWidth = userImage.Width, intInputHeight = userImage.Height;
 
+                
+
                 Bitmap bitmap = new Bitmap(userImage);
                 BitmapData bitmapData = bitmap.LockBits(
                     new Rectangle(0, 0, bitmap.Width, bitmap.Height),
@@ -182,8 +187,12 @@ namespace csharp_opencl_rotate_picture
                 IMem outputImage = Cl.CreateImage2D(context, MemFlags.CopyHostPtr | MemFlags.WriteOnly, clImageFormat,
                     (IntPtr)intInputWidth, (IntPtr)intInputHeight, (IntPtr)0, outputImage2DBuffer, out error);
 
-                error = Cl.SetKernelArg(kernel, 0, (IntPtr)intPtrSize, inputImage2DBuffer);
-                error |= Cl.SetKernelArg(kernel, 1, (IntPtr)intPtrSize, outputImage);
+                error  = Cl.SetKernelArg(kernel, 0, (IntPtr)intPtrSize,  inputImage2DBuffer);
+                error |= Cl.SetKernelArg(kernel, 1, (IntPtr)intPtrSize,  outputImage);
+                error |= Cl.SetKernelArg(kernel, 2, (IntPtr)sizeof(int), intInputWidth);
+                error |= Cl.SetKernelArg(kernel, 3, (IntPtr)sizeof(int), intInputHeight);
+                error |= Cl.SetKernelArg(kernel, 4, (IntPtr)sizeof(double), sin);
+                error |= Cl.SetKernelArg(kernel, 5, (IntPtr)sizeof(double), cos);
 
                 CommandQueue cmdQueue = Cl.CreateCommandQueue(context, device, (CommandQueueProperties)0, out error);
 
