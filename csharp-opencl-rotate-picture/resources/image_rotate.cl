@@ -7,12 +7,7 @@
   int2 coord = (int2)(get_global_id(0), get_global_id(1));
   int i = coord.x;
   int j = coord.y;
-  uint4 bgra = read_imageui(srcImg, smp, coord); //The byte order is BGRA
-  float4 bgrafloat = convert_float4(bgra) / 255.0f; //Convert to normalized [0..1] float
-  //Convert RGB to luminance (make the image grayscale).
-  //float luminance =  sqrt(0.1f * bgrafloat.z * bgrafloat.z + 0.6f * 
-   //                   bgrafloat.y * bgrafloat.y + 0.0068f * bgrafloat.x * bgrafloat.x);
-  //bgra.x = bgra.y = bgra.z = (uint) (luminance * 255.0f);
- // bgra.w = 255;
+  uint4 bgra = read_imageui(srcImg, smp, coord); 
+
   write_imageui(dstImg, coord, bgra);
 }
