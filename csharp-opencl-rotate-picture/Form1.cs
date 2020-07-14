@@ -18,7 +18,6 @@ namespace csharp_opencl_rotate_picture
         private string pathToOpenImage;
         private string pathToSaveImage;
         private Image userImage;
-        private Image inImage;
         private Image outImage;
         
         public RotationImageByOpenCL()
@@ -110,10 +109,6 @@ namespace csharp_opencl_rotate_picture
 
         private void RotationImageByOpenCL_Shown(object sender, EventArgs e)
         {
-            pathToOpenImage = string.Empty;
-            pathToSaveImage = string.Empty;
-            currentOpenCLPlatform = 0;
-            currentDeviceOfCurrentPlatform = 0;
             NamesOpenCLPlatfroms.Items.Clear();
             NamesOfDevicesCurrentPlatform.Items.Clear();
             foreach (var item in platfomrsOfOpenCL.Platforms)
@@ -128,6 +123,10 @@ namespace csharp_opencl_rotate_picture
         {
             platfomrsOfOpenCL = new PlatformModel();
             ImageRotates.SizeMode = PictureBoxSizeMode.Zoom;
+            pathToOpenImage = string.Empty;
+            pathToSaveImage = string.Empty;
+            currentOpenCLPlatform = 0;
+            currentDeviceOfCurrentPlatform = 0;
         }
 
         private void Rotate_Click(object sender, EventArgs e)
@@ -167,8 +166,6 @@ namespace csharp_opencl_rotate_picture
                 OpenCL.Net.ImageFormat clImageFormat = new OpenCL.Net.ImageFormat(ChannelOrder.RGBA, ChannelType.Unsigned_Int8);
 
                 int intInputWidth = userImage.Width, intInputHeight = userImage.Height;
-
-                
 
                 Bitmap bitmap = new Bitmap(userImage);
                 BitmapData bitmapData = bitmap.LockBits(

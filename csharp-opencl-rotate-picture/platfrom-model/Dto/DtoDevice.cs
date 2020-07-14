@@ -23,7 +23,7 @@ namespace csharp_opencl_rotate_picture.platfrom_model.Dto
         public string Version => infoBufferDeviceVerion.ToString();
         public string DriverVersion => infoBufferDeviceDriverVersion.ToString();
         public DeviceType Type => infoBufferDeviceType.CastTo<DeviceType>();
-        public long MaxWorkGroupSize => infoBufferDeviceMaxWorkGroupSize.CastTo<long>();
+        public int MaxWorkGroupSize => infoBufferDeviceMaxWorkGroupSize.CastTo<int>();
         public int MaxWorkItemDimensions => infoBufferDeviceMaxWorkItemDimensions.CastTo<int>();
         public Device ID { get; }
 
