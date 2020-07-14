@@ -127,7 +127,7 @@ namespace csharp_opencl_rotate_picture
         private void RotationImageByOpenCL_Load(object sender, EventArgs e)
         {
             platfomrsOfOpenCL = new PlatformModel();
-            ImageRotates.SizeMode = PictureBoxSizeMode.StretchImage;
+            ImageRotates.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void Rotate_Click(object sender, EventArgs e)
